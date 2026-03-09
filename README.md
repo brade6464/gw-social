@@ -39,6 +39,38 @@ Frontend (GitHub Pages)  →  Backend (Google Apps Script)  →  DB (Google Shee
 
 ## 사전 준비
 
+### Git 설치
+
+이 프로젝트의 소스 코드를 내려받고 GitHub Pages로 배포하려면 Git이 필요합니다.
+
+- **Windows**: [Git for Windows](https://gitforwindows.org)에서 다운로드 후 설치
+  - 설치 중 기본 옵션을 그대로 사용해도 됩니다
+  - 설치 후 **Git Bash** 또는 **명령 프롬프트**에서 사용할 수 있습니다
+- **macOS**: 터미널에서 `xcode-select --install` 실행 (Xcode 명령줄 도구에 Git 포함)
+- **설치 확인**:
+
+  ```bash
+  git --version    # 예: git version 2.43.0
+  ```
+
+### GitHub 계정 및 저장소 설정
+
+1. [GitHub](https://github.com)에서 계정을 만듭니다 (이미 있다면 건너뛰세요)
+2. 저장소(repository)를 생성하거나, 이 프로젝트를 Fork합니다
+3. 로컬에 저장소를 복제합니다:
+
+   ```bash
+   git clone https://github.com/brade6464/gw-social.git
+   cd gw-social
+   ```
+
+> **처음 사용하는 경우** Git에 이름과 이메일을 설정해야 합니다:
+>
+> ```bash
+> git config --global user.name "홍길동" #깃허브 사용자 아이디
+> git config --global user.email "email@example.com" #사용자 이메일
+> ```
+
 ### Node.js 설치
 
 clasp CLI를 사용하려면 Node.js가 필요합니다. 설치되어 있지 않다면 아래에서 다운로드하세요.

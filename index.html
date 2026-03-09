@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>사회연대기금 설치 및 운용 방안 설문조사</title>
+  <meta name="description" content="광명시 사회연대기금 설치 및 운용 방안 수립을 위한 설문조사">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header class="survey-header">
+    <div class="badge-label">광명시 사회연대경제센터</div>
+    <h1>사회연대기금 설치 및 운용 방안 설문조사</h1>
+    <p>본 설문은 광명시 사회연대기금 설치·운용 방안 수립을 위한 기초자료 수집을 목적으로 합니다.</p>
+  </header>
+
+  <div class="survey-wrapper">
+    <div class="progress-section">
+      <div class="progress-meta">
+        <span class="step-label" id="stepLabel">1단계: 기본 정보</span>
+        <span id="stepCount">1 / 6</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill" style="width:16.6%"></div>
+      </div>
+      <div class="step-dots" id="stepDots"></div>
+    </div>
+
+    <div id="alertBox"></div>
+
+    <!-- ══ STEP 1: 응답자 정보 ════════════════════════════════ -->
+    <div class="survey-step active" id="step1">
+      <div class="survey-card">
+        <div class="section-title"><span class="icon">📋</span>응답자 정보</div>
+
+        <div class="form-group">
+          <label class="form-label"><span class="q-num">1</span>귀하의 이름은 무엇인가요?<span class="required">*</span></label>
+          <input type="text" class="form-control" id="name" placeholder="성명을 입력하세요">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label"><span class="q-num">2</span>귀하의 성별은 무엇인가요?<span class="required">*</span></label>
+          <div class="radio-group horizontal">
+            <label class="radio-item"><input type="radio" name="gender" value="남성"><label>남성</label></label>
+            <label class="radio-item"><input type="radio" name="gender" value="여성"><label>여성</label></label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label"><span class="q-num">3</span>귀하의 연령대는 어떻게 되시나요?<span class="required">*</span></label>
+          <div class="radio-group horizontal">
+            <label class="radio-item"><input type="radio" name="age_group" value="20대"><label>20대</label></label>
+            <label class="radio-item"><input type="radio" name="age_group" value="30대"><label>30대</label></label>
+            <label class="radio-item"><input type="radio" name="age_group" value="40대"><label>40대</label></label>
+            <label class="radio-item"><input type="radio" name="age_group" value="50대"><label>50대</label></label>
+            <label class="radio-item"><input type="radio" name="age_group" value="60대"><label>60대</label></label>
+            <label class="radio-item"><input type="radio" name="age_group" value="70대 이상"><label>70대 이상</label></label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label"><span class="q-num">4</span>귀하의 연락처는 무엇입니까?</label>
+          <input type="tel" class="form-control" id="phone" placeholder="연락처를 입력하세요">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label"><span class="q-num">5</span>귀하의 이메일 주소는 무엇입니까?</label>
+          <input type="email" class="form-control" id="email" placeholder="이메일을 입력하세요">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label"><span class="q-num">6</span>귀하가 운영하는(속한) 기업명은 무엇입니까?<span class="required">*</span></label>
+          <input type="text" class="form-control" id="company_name" placeholder="기업명을 입력하세요">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label"><span class="q-num">7</span>귀하가 운영하는(속한) 기업의 법인설립은 언제입니까?</label>
+          <div style="display:flex;align-items:center;gap:8px">
+            <input type="number" class="form-control" id="company_year" placeholder="예: 2015" min="1900" max="2030" style="max-width:160px">
+            <span>년</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label"><span class="q-num">8</span>귀하가 운영하는(속한) 기업의 인·지정 유형은 무엇입니까?<span class="required">*</span></label>
+          <div class="radio-group">
+            <label class="radio-item"><input type="radio" name="org_type" value="(예비)사회적기업"><label>(예비)사회적기업</label></label>
+            <label class="radio-item"><input type="radio" name="org_type" value="(예비)마을기업"><label>(예비)마을기업</label></label>
+            <label class="radio-item"><input type="radio" name="org_type" value="사회적협동조합"><label>사회적협동조합</label></label>
+            <label class="radio-item"><input type="radio" name="org_type" value="협동조합"><label>협동조합</label></label>
+            <label class="radio-item"><input type="radio" name="org_type" value="기타" id="orgTypeOther"><label>기타</label></label>
+          </div>
+          <div class="other-input-wrap" id="orgTypeOtherWrap">
+            <input type="text" class="form-control" id="org_type_text" placeholder="기업 유형을 입력하세요">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label"><span class="q-num">9</span>귀하가 운영하는 기업의 주 사업분야는 무엇입니까?</label>
+          <div class="check-group">
+            <label class="check-item"><input type="checkbox" name="business_sector" value="농·축산·어업, 임업, 광업"><label>농·축산·어업, 임업, 광업</label></label>
+            <label class="check-item"><input type="checkbox" name="business_sector" value="제조업"><label>제조업</label></label>
+            <label class="check-item"><input type="checkbox" name="business_sector" value="전기, 가스, 증기 및 수도사업"><label>전기, 가스, 증기 및 수도사업</label></label>
+            <label class="check-item"><input type="checkbox" name="business_sector" value="하수, 폐기물처리, 원료재생 및 환경복원업"><label>하수, 폐기물처리, 원료재생 및 환경복원업</label></label>
+            <label class="check-item"><input type="checkbox" name="business_sector" value="건설업"><label>건설업</label></label>
+            <label class="check-item"><input type="checkbox" name="business_sector" value="도매 및 소매업"><label>도매 및 소매업</label></label>
+            <label class="check-item"><input type="checkbox" name="business_sector" value="운수업"><label>운수업</label></label>
+            <label class="check-item"><input type="checkbox" name="business_sector" value="숙박 및 음식점업"><label>숙박 및 음식점업</label></label>
+            <label class="check-item"><input type="checkbox" name="business_sector" value="출판, 영상, 방송통신 및 정보서비스업"><label>출판, 영상, 방송통신 및 정보서비스업</label></label>
+            <label class="check-item"><input type="checkbox" name="business_sector" value="금융 및 보험업"><label>금융 및 보험업</label></label>
+            <label class="check-item"><input type="checkbox" name="business_sector" value="부동산업 및 임대업"><label>부동산업 및 임대업</label></label>
+            <label class="check-item"><input type="checkbox" name="business_sector" value="전문, 과학 및 기술 서비스업"><label>전문, 과학 및 기술 서비스업</label></label>
+            <label class="check-item"><input type="checkbox" name="business_sector" value="사업시설관리 및 사업지원 서비스업"><label>사업시설관리 및 사업지원 서비스업</label></label>
+            <label class="check-item"><input type="checkbox" name="business_sector" value="교육 서비스업"><label>교육 서비스업</label></label>
+            <label class="check-item"><input type="checkbox" name="business_sector" value="보건업 및 사회복지(돌봄) 서비스업"><label>보건업 및 사회복지(돌봄) 서비스업</label></label>
+            <label class="check-item"><input type="checkbox" name="business_sector" value="예술, 스포츠 및 여가 관련 서비스업"><label>예술, 스포츠 및 여가 관련 서비스업</label></label>
+            <label class="check-item"><input type="checkbox" name="business_sector" value="협회 및 단체, 수리 및 개인 서비스업"><label>협회 및 단체, 수리 및 개인 서비스업</label></label>
+            <label class="check-item"><input type="checkbox" name="business_sector" value="기타" id="sectorOther"><label>기타</label></label>
+          </div>
+          <div class="other-input-wrap" id="sectorOtherWrap">
+            <input type="text" class="form-control" id="sector_other_text" placeholder="기타 사업 분야를 입력하세요">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label"><span class="q-num">10</span>귀하가 운영하는(속한) 기업의 주 사업 활동을 간략히 설명하세요.</label>
+          <textarea class="form-control" id="biz_description" rows="3" placeholder="주 사업 활동을 간략히 기재해 주세요."></textarea>
+        </div>
+      </div>
+      <div class="nav-buttons">
+        <div></div>
+        <button class="btn btn-primary" onclick="goNext()">다음 단계 <span>→</span></button>
+      </div>
+    </div>
+
+    <!-- ══ STEP 2: 일반현황 ══════════════════════════════════ -->
+    <div class="survey-step" id="step2">
+      <div class="survey-card">
+        <div class="section-title"><span class="icon">💰</span>일반현황</div>
+
+        <div class="form-group">
+          <label class="form-label"><span class="q-num">1</span>귀하가 운영하는(속한) 기업의 자금조달 방법은 무엇입니까? <span class="required">*</span>
+            <span class="form-hint" style="font-weight:400"> — 복수 선택 가능하며 비율을 100%가 되도록 맞춰 주세요.</span>
+          </label>
+          <div class="pct-grid" id="pctGrid">
+            <span class="pct-label">자체 수입(매출)</span>
+            <div class="pct-input-wrap"><input type="number" class="form-control pct-input" id="fund_self_pct" min="0" max="100" value="0"><span class="pct-unit">%</span></div>
+
+            <span class="pct-label">출자 또는 증자</span>
+            <div class="pct-input-wrap"><input type="number" class="form-control pct-input" id="fund_invest_pct" min="0" max="100" value="0"><span class="pct-unit">%</span></div>
+
+            <span class="pct-label">중앙 또는 지방 정부의 보조금</span>
+            <div class="pct-input-wrap"><input type="number" class="form-control pct-input" id="fund_gov_subsidy_pct" min="0" max="100" value="0"><span class="pct-unit">%</span></div>
+
+            <span class="pct-label">정책자금(중소상공인 지원 자금 등)</span>
+            <div class="pct-input-wrap"><input type="number" class="form-control pct-input" id="fund_policy_pct" min="0" max="100" value="0"><span class="pct-unit">%</span></div>
+
+            <span class="pct-label">제1금융권(은행, 상호신용금고 포함) 대출</span>
+            <div class="pct-input-wrap"><input type="number" class="form-control pct-input" id="fund_loan_1st_pct" min="0" max="100" value="0"><span class="pct-unit">%</span></div>
+
+            <span class="pct-label">제2금융권(캐피탈, 저축은행 등) 대출</span>
+            <div class="pct-input-wrap"><input type="number" class="form-control pct-input" id="fund_loan_2nd_pct" min="0" max="100" value="0"><span class="pct-unit">%</span></div>
+
+            <span class="pct-label">민간 투자</span>
+            <div class="pct-input-wrap"><input type="number" class="form-control pct-input" id="fund_private_invest_pct" min="0" max="100" value="0"><span class="pct-unit">%</span></div>
+
+            <span class="pct-label">민간 후원·기부</span>
+            <div class="pct-input-wrap"><input type="number" class="form-control pct-input" id="fund_donation_pct" min="0" max="100" value="0"><span class="pct-unit">%</span></div>
+
+            <span class="pct-label">기타 <span class="text-muted" style="font-size:12px">(자유기재)</span></span>
+            <div class="pct-input-wrap"><input type="number" class="form-control pct-input" id="fund_other_pct" min="0" max="100" value="0"><span class="pct-unit">%</span></div>
+          </div>
+          <div class="mt-8">
+            <input type="text" class="form-control" id="fund_other_text" placeholder="기타 자금조달 내용 입력 (예: 대표이사 등의 차입금)">
+          </div>
+          <div class="pct-status-bar neutral" id="pctStatus">
+            <span class="status-icon">ℹ️</span>
+            <span id="pctStatusText">각 항목에 비율(%)을 입력하세요. 합계: <strong id="pctTotal">0</strong>%</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label"><span class="q-num">2</span>귀하가 운영하는(속한) 기업이 최근 3년간 자금조달에 어려움을 겪은 경험이 있습니까?</label>
+          <div class="radio-group horizontal">
+            <label class="radio-item"><input type="radio" name="fund_3yr_difficulty" value="있다"><label>있다</label></label>
+            <label class="radio-item"><input type="radio" name="fund_3yr_difficulty" value="없다"><label>없다</label></label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label"><span class="q-num">3</span>귀하가 운영하는(속한) 기업이 금융기관의 대출 경험은 어떻습니까?</label>
+          <p class="form-hint mb-2">※ 경험 있음 선택 시 대출시기·대출액·대출이율을 입력해 주세요.</p>
+          <div class="loan-table-wrapper">
+            <table class="loan-table" id="loanTable">
+              <thead>
+                <tr>
+                  <th>대출 기관(종류)</th>
+                  <th>대출 경험</th>
+                  <th>대출시기(년)</th>
+                  <th>대출액(만원)</th>
+                  <th>대출이율(%)</th>
+                </tr>
+              </thead>
+              <tbody id="loanTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label"><span class="q-num">4</span>귀하가 운영하는(속한) 기업이 대출 경험이 있다면, 그 용도는 무엇입니까? <span class="text-muted">(복수 선택)</span></label>
+          <div class="check-group">
+            <label class="check-item"><input type="checkbox" name="loan_purpose" value="운전(영)자금(인건비 등)"><label>운전(영)자금(인건비 등)</label></label>
+            <label class="check-item"><input type="checkbox" name="loan_purpose" value="시설자금(시설 투자 등)"><label>시설자금(시설 투자 등)</label></label>
+            <label class="check-item"><input type="checkbox" name="loan_purpose" value="사업개발비(새로운 제품·기술 개발 등)"><label>사업개발비(새로운 제품·기술 개발 등)</label></label>
+            <label class="check-item"><input type="checkbox" name="loan_purpose" value="부동산 매입(건물, 토지 등)"><label>부동산 매입(건물, 토지 등)</label></label>
+            <label class="check-item"><input type="checkbox" name="loan_purpose" value="차입금(고금리) 대환"><label>차입금(고금리) 대환</label></label>
+            <label class="check-item"><input type="checkbox" name="loan_purpose" value="기타" id="loanPurposeOther"><label>기타</label></label>
+          </div>
+          <div class="other-input-wrap" id="loanPurposeOtherWrap">
+            <input type="text" class="form-control" id="loan_purpose_text" placeholder="기타 용도를 입력하세요">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label"><span class="q-num">5</span>귀하가 운영하는(속한) 기업의 전체 대출 규모는 어떻게 되시나요?</label>
+          <div class="radio-group">
+            <label class="radio-item"><input type="radio" name="total_loan_amount" value="1천만 원 미만"><label>1천만 원 미만</label></label>
+            <label class="radio-item"><input type="radio" name="total_loan_amount" value="1천만 원 이상 ~ 5천만 원 미만"><label>1천만 원 ~ 5천만 원 미만</label></label>
+            <label class="radio-item"><input type="radio" name="total_loan_amount" value="5천만 원 이상 ~ 1억 원 미만"><label>5천만 원 ~ 1억 원 미만</label></label>
+            <label class="radio-item"><input type="radio" name="total_loan_amount" value="1억 원 이상 ~ 3억 원 미만"><label>1억 원 ~ 3억 원 미만</label></label>
+            <label class="radio-item"><input type="radio" name="total_loan_amount" value="3억 원 이상 ~ 5억 원 미만"><label>3억 원 ~ 5억 원 미만</label></label>
+            <label class="radio-item"><input type="radio" name="total_loan_amount" value="기타" id="totalLoanAmtOther"><label>기타</label></label>
+          </div>
+          <div class="other-input-wrap" id="totalLoanAmtOtherWrap">
+            <input type="text" class="form-control" id="total_loan_amount_text" placeholder="금액을 기재하세요 (예: 6억 원)">
+          </div>
+        </div>
+      </div>
+      <div class="nav-buttons">
+        <button class="btn btn-secondary" onclick="goPrev()">← 이전</button>
+        <button class="btn btn-primary" id="nextFromStep2" onclick="goNext()">다음 단계 →</button>
+      </div>
+    </div>
+
+    <!-- ══ STEP 3: 대출 조건 및 자금조달 어려움 ══════════════ -->
+    <div class="survey-step" id="step3">
+      <div class="survey-card">
+        <div class="section-title"><span class="icon">📊</span>대출 조건 및 자금조달 어려움</div>
+
+        <div class="form-group">
+          <label class="form-label"><span class="q-num">6</span>귀하가 운영하는(속한) 기업이 대출금 상환 조건은 어떻게 되시나요?</label>
+          <div class="radio-group">
+            <label class="radio-item"><input type="radio" name="loan_repayment" value="만기일시상환"><label>만기일시상환</label></label>
+            <label class="radio-item"><input type="radio" name="loan_repayment" value="원금분할상환"><label>원금분할상환</label></label>
+            <label class="radio-item"><input type="radio" name="loan_repayment" value="원리금균등분할상환"><label>원리금균등분할상환</label></label>
+            <label class="radio-item"><input type="radio" name="loan_repayment" value="기타" id="loanRepaymentOther"><label>기타</label></label>
+          </div>
+          <div class="other-input-wrap" id="loanRepaymentOtherWrap">
+            <input type="text" class="form-control" id="loan_repayment_text" placeholder="기타 상환 조건을 입력하세요">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label"><span class="q-num">7</span>귀하가 운영하는(속한) 기업이 자금조달 시 가장 어려웠던 점은 무엇입니까? <span class="text-muted">(복수 응답 가능)</span></label>
+          <div class="check-group">
+            <label class="check-item"><input type="checkbox" name="fund_difficulty_main" value="담보 또는 보증 부족"><label>담보 또는 보증 부족</label></label>
+            <label class="check-item"><input type="checkbox" name="fund_difficulty_main" value="신용 등급"><label>신용 등급</label></label>
+            <label class="check-item"><input type="checkbox" name="fund_difficulty_main" value="재무구조 문제"><label>재무구조 문제</label></label>
+            <label class="check-item"><input type="checkbox" name="fund_difficulty_main" value="높은 대출금리"><label>높은 대출금리</label></label>
+            <label class="check-item"><input type="checkbox" name="fund_difficulty_main" value="상환기간 및 방법"><label>상환기간 및 방법</label></label>
+            <label class="check-item"><input type="checkbox" name="fund_difficulty_main" value="복잡한 절차 및 행정부담(서류작성 등)"><label>복잡한 절차 및 행정부담(서류작성 등)</label></label>
+            <label class="check-item"><input type="checkbox" name="fund_difficulty_main" value="성장 가능성에 대한 평가 부족"><label>성장 가능성에 대한 평가 부족</label></label>
+            <label class="check-item"><input type="checkbox" name="fund_difficulty_main" value="사회적 성과에 대한 미고려"><label>사회적 성과에 대한 미고려</label></label>
+            <label class="check-item"><input type="checkbox" name="fund_difficulty_main" value="자금 지급까지 소요 기간이 길다"><label>자금 지급까지 소요 기간이 길다</label></label>
+            <label class="check-item"><input type="checkbox" name="fund_difficulty_main" value="정보 부족(지원제도 및 금융상품 등)"><label>정보 부족(지원제도 및 금융상품 등)</label></label>
+            <label class="check-item"><input type="checkbox" name="fund_difficulty_main" value="기타" id="fundDiffOther"><label>기타</label></label>
+          </div>
+          <div class="other-input-wrap" id="fundDiffOtherWrap">
+            <input type="text" class="form-control" id="fund_difficulty_text" placeholder="기타 어려움을 입력하세요">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label"><span class="q-num">8</span>귀하가 운영하는(속한) 기업의 대출 조건은 만족하십니까?</label>
+          <div class="radio-group horizontal">
+            <label class="radio-item"><input type="radio" name="loan_satisfaction" value="매우 만족"><label>매우 만족</label></label>
+            <label class="radio-item"><input type="radio" name="loan_satisfaction" value="만족"><label>만족</label></label>
+            <label class="radio-item"><input type="radio" name="loan_satisfaction" value="보통"><label>보통</label></label>
+            <label class="radio-item"><input type="radio" name="loan_satisfaction" value="불만족"><label>불만족</label></label>
+            <label class="radio-item"><input type="radio" name="loan_satisfaction" value="매우 불만족"><label>매우 불만족</label></label>
+          </div>
+          <p class="form-hint">※ 만족 및 보통 선택은 9번으로 이동</p>
+        </div>
+
+        <div class="form-group" id="loanDissatisfactionGroup" style="display:none">
+          <label class="form-label"><span class="q-num">8-1</span>귀하가 운영하는(속한) 기업의 대출 조건이 불만족한 이유는 무엇입니까?</label>
+          <div class="check-group">
+            <label class="check-item"><input type="checkbox" name="loan_dissatisfaction_reason" value="대출금액이 적음"><label>대출금액이 적음</label></label>
+            <label class="check-item"><input type="checkbox" name="loan_dissatisfaction_reason" value="대출이자율이 높음"><label>대출이자율이 높음</label></label>
+            <label class="check-item"><input type="checkbox" name="loan_dissatisfaction_reason" value="상환기간이 짧음"><label>상환기간이 짧음</label></label>
+            <label class="check-item"><input type="checkbox" name="loan_dissatisfaction_reason" value="상환조건이 맞지 않음"><label>상환조건이 맞지 않음</label></label>
+            <label class="check-item"><input type="checkbox" name="loan_dissatisfaction_reason" value="기타" id="loanDissatisfactionOther"><label>기타</label></label>
+          </div>
+          <div class="other-input-wrap" id="loanDissatisfactionOtherWrap">
+            <input type="text" class="form-control" id="loan_dissatisfaction_text" placeholder="기타 이유를 입력하세요">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label"><span class="q-num">9</span>향후 1~3년 내 자금 조달 계획이 있다면, 어떤 방식을 활용하실 계획입니까? <span class="text-muted">(복수 선택)</span></label>
+          <div class="check-group">
+            <label class="check-item"><input type="checkbox" name="future_fund_plan" value="출자 및 증자"><label>출자 및 증자</label></label>
+            <label class="check-item"><input type="checkbox" name="future_fund_plan" value="정부 보조금"><label>정부 보조금</label></label>
+            <label class="check-item"><input type="checkbox" name="future_fund_plan" value="민간 투자(임팩트 등)"><label>민간 투자(임팩트 등)</label></label>
+            <label class="check-item"><input type="checkbox" name="future_fund_plan" value="기부 및 후원"><label>기부 및 후원</label></label>
+            <label class="check-item"><input type="checkbox" name="future_fund_plan" value="정책자금 대출(중소기업진흥공단, 신용보증기금 등)"><label>정책자금 대출(중소기업진흥공단, 신용보증기금 등)</label></label>
+            <label class="check-item"><input type="checkbox" name="future_fund_plan" value="경기도 사회적경제기금 대출"><label>경기도 사회적경제기금 대출</label></label>
+            <label class="check-item"><input type="checkbox" name="future_fund_plan" value="경기신용보증재단 사회적경제기업 특례보증"><label>경기신용보증재단 사회적경제기업 특례보증</label></label>
+            <label class="check-item"><input type="checkbox" name="future_fund_plan" value="일반 금융기관 대출(제1금융 및 제2금융 포함)"><label>일반 금융기관 대출(제1·제2금융 포함)</label></label>
+            <label class="check-item"><input type="checkbox" name="future_fund_plan" value="사회연대금융 중개기관 대출(신나는조합, 사회연대은행 등)"><label>사회연대금융 중개기관 대출(신나는조합, 사회연대은행 등)</label></label>
+            <label class="check-item"><input type="checkbox" name="future_fund_plan" value="기타" id="futureFundPlanOther"><label>기타</label></label>
+          </div>
+          <div class="other-input-wrap" id="futureFundPlanOtherWrap">
+            <input type="text" class="form-control" id="future_fund_plan_text" placeholder="기타 방식을 입력하세요">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label"><span class="q-num">10</span>귀하가 운영하는(속한) 기업에서 자금이 가장 필요한 시기는 언제입니까?</label>
+          <div class="check-group">
+            <label class="check-item"><input type="checkbox" name="fund_needed_timing" value="창업 초기(1년 ~ 7년)"><label>창업 초기(1년 ~ 7년)</label></label>
+            <label class="check-item"><input type="checkbox" name="fund_needed_timing" value="성장·확장 단계(7년 이후)"><label>성장·확장 단계(7년 이후)</label></label>
+            <label class="check-item"><input type="checkbox" name="fund_needed_timing" value="시설·설비 투자 시"><label>시설·설비 투자 시</label></label>
+            <label class="check-item"><input type="checkbox" name="fund_needed_timing" value="건물, 토지 등 부동산 구입 시"><label>건물, 토지 등 부동산 구입 시</label></label>
+            <label class="check-item"><input type="checkbox" name="fund_needed_timing" value="사업운영 중 일시적 자금 부족 시"><label>사업운영 중 일시적 자금 부족 시</label></label>
+            <label class="check-item"><input type="checkbox" name="fund_needed_timing" value="기타" id="fundNeededTimingOther"><label>기타</label></label>
+          </div>
+          <div class="other-input-wrap" id="fundNeededTimingOtherWrap">
+            <input type="text" class="form-control" id="fund_needed_timing_text" placeholder="기타 시기를 입력하세요">
+          </div>
+        </div>
+      </div>
+      <div class="nav-buttons">
+        <button class="btn btn-secondary" onclick="goPrev()">← 이전</button>
+        <button class="btn btn-primary" onclick="goNext()">다음 단계 →</button>
+      </div>
+    </div>
+
+    <!-- ══ STEP 4: 광명시 사회연대기금 ══════════════════════════════ -->
+    <div class="survey-step" id="step4">
+      <div class="survey-card">
+        <div class="section-title"><span class="icon">🏦</span>광명시 사회연대기금</div>
+
+        <div class="form-group">
+          <label class="form-label"><span class="q-num">1</span>귀하는 현재 사회연대경제조직이 금융제도(상품)을 이용하는데 접근성이 어떻다고 생각하십니까? (금융정보 포함)</label>
+          <div class="radio-group horizontal">
+            <label class="radio-item"><input type="radio" name="finance_accessibility" value="매우 좋다"><label>매우 좋다</label></label>
+            <label class="radio-item"><input type="radio" name="finance_accessibility" value="좋다"><label>좋다</label></label>
+            <label class="radio-item"><input type="radio" name="finance_accessibility" value="보통이다"><label>보통이다</label></label>
+            <label class="radio-item"><input type="radio" name="finance_accessibility" value="어렵다"><label>어렵다</label></label>
+            <label class="radio-item"><input type="radio" name="finance_accessibility" value="매우 어렵다"><label>매우 어렵다</label></label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label"><span class="q-num">2</span>귀하는 사회연대경제기업의 성장과 지역문제 해결을 위한 전용 기금인 '광명시 사회연대기금'이 필요하다고 생각하십니까?</label>
+          <div class="radio-group horizontal">
+            <label class="radio-item"><input type="radio" name="solidarity_need" value="매우 필요하다"><label>매우 필요하다</label></label>
+            <label class="radio-item"><input type="radio" name="solidarity_need" value="필요하다"><label>필요하다</label></label>
+            <label class="radio-item"><input type="radio" name="solidarity_need" value="보통이다"><label>보통이다</label></label>
+            <label class="radio-item"><input type="radio" name="solidarity_need" value="필요하지 않다"><label>필요하지 않다</label></label>
+            <label class="radio-item"><input type="radio" name="solidarity_need" value="매우 필요하지 않다"><label>매우 필요하지 않다</label></label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label"><span class="q-num">3</span>귀하는 '광명시 사회연대기금'이 왜 필요하다고 생각하십니까? <span class="text-muted">(복수 선택)</span></label>
+          <div class="check-group">
+            <label class="check-item"><input type="checkbox" name="solidarity_need_reason" value="사회연대경제기업의 안정적인 경영과 지속가능한 성장을 돕기 위해"><label>사회연대경제기업의 안정적인 경영과 지속가능한 성장을 돕기 위해</label></label>
+            <label class="check-item"><input type="checkbox" name="solidarity_need_reason" value="사회적 가치 중심 사업에 대한 투자와 지원이 필요하기 때문에"><label>사회적 가치 중심 사업에 대한 투자와 지원이 필요하기 때문에</label></label>
+            <label class="check-item"><input type="checkbox" name="solidarity_need_reason" value="담보·신용 한계로 금융 접근이 어려운 조직을 지원하기 위해"><label>담보·신용 한계로 금융 접근이 어려운 조직을 지원하기 위해</label></label>
+            <label class="check-item"><input type="checkbox" name="solidarity_need_reason" value="지역경제 활성화 및 지역순환경제 구축을 위해"><label>지역경제 활성화 및 지역순환경제 구축을 위해</label></label>
+            <label class="check-item"><input type="checkbox" name="solidarity_need_reason" value="시민·기업·공공이 함께 참여하는 지역 금융 기반 마련을 위해"><label>시민·기업·공공이 함께 참여하는 지역 금융 기반 마련을 위해</label></label>
+            <label class="check-item"><input type="checkbox" name="solidarity_need_reason" value="기존 금융상품 및 정부 보조금 제도의 한계를 보완하기 위해"><label>기존 금융상품 및 정부 보조금 제도의 한계를 보완하기 위해</label></label>
+            <label class="check-item"><input type="checkbox" name="solidarity_need_reason" value="취약계층의 일자리 및 사회서비스 공급 확대(활성화)를 위해"><label>취약계층의 일자리 및 사회서비스 공급 확대(활성화)를 위해</label></label>
+            <label class="check-item"><input type="checkbox" name="solidarity_need_reason" value="기타" id="solidarityNeedReasonOther"><label>기타</label></label>
+          </div>
+          <div class="other-input-wrap" id="solidarityNeedReasonOtherWrap">
+            <input type="text" class="form-control" id="solidarity_need_reason_text" placeholder="기타 이유를 입력하세요">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label"><span class="q-num">4</span>귀하는 광명시 사회연대기금이 기존 사회연대금융 상품을 보완하는 역할을 할 수 있다고 생각하십니까?
+            <span class="text-muted" style="font-size:12px"> ※ '그렇지 않다' 선택은 5번으로 이동</span></label>
+          <div class="radio-group horizontal">
+            <label class="radio-item"><input type="radio" name="solidarity_complement" value="매우 그렇다"><label>매우 그렇다</label></label>
+            <label class="radio-item"><input type="radio" name="solidarity_complement" value="그렇다"><label>그렇다</label></label>
+            <label class="radio-item"><input type="radio" name="solidarity_complement" value="보통이다"><label>보통이다</label></label>
+            <label class="radio-item"><input type="radio" name="solidarity_complement" value="그렇지 않다"><label>그렇지 않다</label></label>
+            <label class="radio-item"><input type="radio" name="solidarity_complement" value="매우 그렇지 않다"><label>매우 그렇지 않다</label></label>
+          </div>
+        </div>
+
+        <div class="form-group" id="solidarityComplementReasonGroup" style="display:none">
+          <label class="form-label"><span class="q-num">4-1</span>귀하는 '광명시 사회연대기금'이 기존 사회연대금융 상품의 어떤 점을 보완할 수 있다고 생각하십니까?</label>
+          <div class="check-group">
+            <label class="check-item"><input type="checkbox" name="solidarity_complement_reason" value="복잡한 절차 및 행정부담(서류 작성 등) 감소"><label>복잡한 절차 및 행정부담(서류 작성 등) 감소</label></label>
+            <label class="check-item"><input type="checkbox" name="solidarity_complement_reason" value="담보 및 신용 조건의 완화"><label>담보 및 신용 조건의 완화</label></label>
+            <label class="check-item"><input type="checkbox" name="solidarity_complement_reason" value="사회적 가치 성과에 대한 고려"><label>사회적 가치 성과에 대한 고려</label></label>
+            <label class="check-item"><input type="checkbox" name="solidarity_complement_reason" value="성장가능성에 대한 평가"><label>성장가능성에 대한 평가</label></label>
+            <label class="check-item"><input type="checkbox" name="solidarity_complement_reason" value="낮은 대출금리"><label>낮은 대출금리</label></label>
+            <label class="check-item"><input type="checkbox" name="solidarity_complement_reason" value="상환조건 및 기간의 유연성"><label>상환조건 및 기간의 유연성</label></label>
+            <label class="check-item"><input type="checkbox" name="solidarity_complement_reason" value="대출심사 기간의 단축"><label>대출심사 기간의 단축</label></label>
+            <label class="check-item"><input type="checkbox" name="solidarity_complement_reason" value="기타" id="solidarityComplementOther"><label>기타</label></label>
+          </div>
+          <div class="other-input-wrap" id="solidarityComplementOtherWrap">
+            <input type="text" class="form-control" id="solidarity_complement_text" placeholder="기타 내용을 입력하세요">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label"><span class="q-num">5</span>'광명시 사회연대기금'이 설치되면 귀하가 운영하는(속한) 기업 경영에 얼마나 도움이 될 것으로 생각하십니까?</label>
+          <div class="radio-group horizontal">
+            <label class="radio-item"><input type="radio" name="solidarity_impact" value="매우 도움 될 것이다"><label>매우 도움 될 것이다</label></label>
+            <label class="radio-item"><input type="radio" name="solidarity_impact" value="도움 될 것이다"><label>도움 될 것이다</label></label>
+            <label class="radio-item"><input type="radio" name="solidarity_impact" value="보통이다"><label>보통이다</label></label>
+            <label class="radio-item"><input type="radio" name="solidarity_impact" value="도움이 되지 않을 것이다"><label>도움이 되지 않을 것이다</label></label>
+            <label class="radio-item"><input type="radio" name="solidarity_impact" value="전혀 도움이 되지 않을 것이다"><label>전혀 도움이 되지 않을 것이다</label></label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label"><span class="q-num">6</span>귀하는 '광명시 사회연대기금'이 어떤 방식으로 운영되는 것이 바람직하다고 생각하십니까? <span class="text-muted">(복수 선택)</span></label>
+          <div class="check-group">
+            <label class="check-item"><input type="checkbox" name="solidarity_operation" value="저리 융자(대출) 지원"><label>저리 융자(대출) 지원</label></label>
+            <label class="check-item"><input type="checkbox" name="solidarity_operation" value="투자(지분·펀드) 방식 지원"><label>투자(지분·펀드) 방식 지원</label></label>
+            <label class="check-item"><input type="checkbox" name="solidarity_operation" value="창업 또는 성장을 위한 사업화 지원금"><label>창업 또는 성장을 위한 사업화 지원금</label></label>
+            <label class="check-item"><input type="checkbox" name="solidarity_operation" value="이차보전 등 이자 지원"><label>이차보전 등 이자 지원</label></label>
+            <label class="check-item"><input type="checkbox" name="solidarity_operation" value="보증 및 금융기관 연계 지원"><label>보증 및 금융기관 연계 지원</label></label>
+            <label class="check-item"><input type="checkbox" name="solidarity_operation" value="사회연대경제조직 설립 및 운영 지원"><label>사회연대경제조직 설립 및 운영 지원</label></label>
+            <label class="check-item"><input type="checkbox" name="solidarity_operation" value="자조 기금(공제조합 등) 매칭 지원"><label>자조 기금(공제조합 등) 매칭 지원</label></label>
+            <label class="check-item"><input type="checkbox" name="solidarity_operation" value="기타" id="solidarityOperationOther"><label>기타</label></label>
+          </div>
+          <div class="other-input-wrap" id="solidarityOperationOtherWrap">
+            <input type="text" class="form-control" id="solidarity_operation_text" placeholder="기타 내용을 입력하세요">
+          </div>
+        </div>
+      </div>
+      <div class="nav-buttons">
+        <button class="btn btn-secondary" onclick="goPrev()">← 이전</button>
+        <button class="btn btn-primary" onclick="goNext()">다음 단계 →</button>
+      </div>
+    </div>
+
+    <!-- ══ STEP 5: 사회연대기금 활용 ════════════════════════ -->
+    <div class="survey-step" id="step5">
+      <div class="survey-card">
+        <div class="section-title"><span class="icon">🌱</span>사회연대기금 활용</div>
+
+        <div class="form-group">
+          <label class="form-label"><span class="q-num">7</span>귀하는 '광명시 사회연대기금'을 이용할 때 가장 중요한 요소로 무엇을 생각하십니까? <span class="text-muted">(복수 선택)</span></label>
+          <div class="check-group">
+            <label class="check-item"><input type="checkbox" name="fund_important_factor" value="(융자시)낮은 금리"><label>(융자시)낮은 금리</label></label>
+            <label class="check-item"><input type="checkbox" name="fund_important_factor" value="(투자시)낮은 투자회수율"><label>(투자시)낮은 투자회수율</label></label>
+            <label class="check-item"><input type="checkbox" name="fund_important_factor" value="상환 조건 및 기간"><label>상환 조건 및 기간</label></label>
+            <label class="check-item"><input type="checkbox" name="fund_important_factor" value="간편한 신청 및 서류"><label>간편한 신청 및 서류</label></label>
+            <label class="check-item"><input type="checkbox" name="fund_important_factor" value="사회적 가치를 반영한 심사 기준"><label>사회적 가치를 반영한 심사 기준</label></label>
+            <label class="check-item"><input type="checkbox" name="fund_important_factor" value="사후 관리 및 컨설팅"><label>사후 관리 및 컨설팅</label></label>
+            <label class="check-item"><input type="checkbox" name="fund_important_factor" value="기타" id="fundImportantFactorOther"><label>기타</label></label>
+          </div>
+          <div class="other-input-wrap" id="fundImportantFactorOtherWrap">
+            <input type="text" class="form-control" id="fund_important_factor_text" placeholder="기타 요소를 입력하세요">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label"><span class="q-num">8</span>귀하는 '광명시 사회연대기금'이 설치되면 이용하시겠습니까?</label>
+          <div class="radio-group horizontal">
+            <label class="radio-item"><input type="radio" name="fund_use_willingness" value="적극 이용한다"><label>적극 이용한다</label></label>
+            <label class="radio-item"><input type="radio" name="fund_use_willingness" value="이용한다"><label>이용한다</label></label>
+            <label class="radio-item"><input type="radio" name="fund_use_willingness" value="생각해 본다"><label>생각해 본다</label></label>
+            <label class="radio-item"><input type="radio" name="fund_use_willingness" value="이용하지 않는다"><label>이용하지 않는다</label></label>
+            <label class="radio-item"><input type="radio" name="fund_use_willingness" value="전혀 이용하지 않는다"><label>전혀 이용하지 않는다</label></label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label"><span class="q-num">9</span>귀하는 어떠한 목적으로 '광명시 사회연대기금'을 이용하시겠습니까? <span class="text-muted">(복수 선택)</span></label>
+          <div class="check-group">
+            <label class="check-item"><input type="checkbox" name="fund_use_purpose" value="긴급 운영자금(인건비 임차료 등)"><label>긴급 운영자금(인건비 임차료 등)</label></label>
+            <label class="check-item"><input type="checkbox" name="fund_use_purpose" value="신규 시설·설비 투자"><label>신규 시설·설비 투자</label></label>
+            <label class="check-item"><input type="checkbox" name="fund_use_purpose" value="건물 또는 토지 등 부동산 구입"><label>건물 또는 토지 등 부동산 구입</label></label>
+            <label class="check-item"><input type="checkbox" name="fund_use_purpose" value="사업 확대를 위한 사업개발비(R&D 비용 등)"><label>사업 확대를 위한 사업개발비(R&D 비용 등)</label></label>
+            <label class="check-item"><input type="checkbox" name="fund_use_purpose" value="기존 대출 상환(대환대출)"><label>기존 대출 상환(대환대출)</label></label>
+            <label class="check-item"><input type="checkbox" name="fund_use_purpose" value="홍보·마케팅 자금"><label>홍보·마케팅 자금</label></label>
+            <label class="check-item"><input type="checkbox" name="fund_use_purpose" value="기타" id="fundPurposeOther"><label>기타</label></label>
+          </div>
+          <div class="other-input-wrap" id="fundPurposeOtherWrap">
+            <input type="text" class="form-control" id="fund_purpose_text" placeholder="기타 목적을 입력하세요">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label"><span class="q-num">10</span>귀하가 '광명시 사회연대기금'을 이용하여 자금을 조달한다면 자금 규모는 얼마 정도 생각하십니까?</label>
+          <div class="radio-group">
+            <label class="radio-item"><input type="radio" name="fund_expected_amount" value="1천만 원 미만"><label>1천만 원 미만</label></label>
+            <label class="radio-item"><input type="radio" name="fund_expected_amount" value="1천만 원 이상 ~ 3천만 원 미만"><label>1천만 원 ~ 3천만 원 미만</label></label>
+            <label class="radio-item"><input type="radio" name="fund_expected_amount" value="3천만 원 이상 ~ 5천만 원 미만"><label>3천만 원 ~ 5천만 원 미만</label></label>
+            <label class="radio-item"><input type="radio" name="fund_expected_amount" value="5천만 원 이상 ~ 1억 원 미만"><label>5천만 원 ~ 1억 원 미만</label></label>
+            <label class="radio-item"><input type="radio" name="fund_expected_amount" value="1억 원 이상 ~ 3억 원 미만"><label>1억 원 ~ 3억 원 미만</label></label>
+            <label class="radio-item"><input type="radio" name="fund_expected_amount" value="3억 원 이상 ~ 5억 원 미만"><label>3억 원 ~ 5억 원 미만</label></label>
+            <label class="radio-item"><input type="radio" name="fund_expected_amount" value="5억 원 이상"><label>5억 원 이상</label></label>
+            <label class="radio-item"><input type="radio" name="fund_expected_amount" value="기타" id="fundExpectedAmtOther"><label>기타</label></label>
+          </div>
+          <div class="other-input-wrap" id="fundExpectedAmtOtherWrap">
+            <input type="text" class="form-control" id="fund_expected_amount_text" placeholder="금액을 기재하세요">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label"><span class="q-num">10</span>귀하는 사회연대경제기업이 모여 자조기금 또는 공제조합을 만든다면 참여하시겠습니까?</label>
+          <div class="radio-group horizontal">
+            <label class="radio-item"><input type="radio" name="fund_participation" value="꼭 참여한다"><label>꼭 참여한다</label></label>
+            <label class="radio-item"><input type="radio" name="fund_participation" value="참여한다"><label>참여한다</label></label>
+            <label class="radio-item"><input type="radio" name="fund_participation" value="생각해 본다"><label>생각해 본다</label></label>
+            <label class="radio-item"><input type="radio" name="fund_participation" value="참여하지 않는다"><label>참여하지 않는다</label></label>
+            <label class="radio-item"><input type="radio" name="fund_participation" value="전혀 참여하지 않는다"><label>전혀 참여하지 않는다</label></label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label"><span class="q-num">11</span>귀하가 사회연대경제조직 간 상호부조를 위한 자조기금 또는 공제조합에 참여한다면, 연평균 어느 정도의 금액까지 출연(납부)이 가능하십니까?
+            <span class="form-hint"> ※ 기금은 추후 긴급 자금 대출이나 이자 지원의 혜택으로 환원됩니다.</span></label>
+          <div class="radio-group">
+            <label class="radio-item"><input type="radio" name="fund_contrib_amount" value="연 5만 원"><label>연 5만 원</label></label>
+            <label class="radio-item"><input type="radio" name="fund_contrib_amount" value="연 10만 원"><label>연 10만 원</label></label>
+            <label class="radio-item"><input type="radio" name="fund_contrib_amount" value="연 10만 원 이상 ~ 30만 원 미만"><label>연 10만 원 ~ 30만 원 미만</label></label>
+            <label class="radio-item"><input type="radio" name="fund_contrib_amount" value="연 30만 원 이상 ~ 50만 원 미만"><label>연 30만 원 ~ 50만 원 미만</label></label>
+            <label class="radio-item"><input type="radio" name="fund_contrib_amount" value="연 50만 원 이상 ~ 100만 원 미만"><label>연 50만 원 ~ 100만 원 미만</label></label>
+            <label class="radio-item"><input type="radio" name="fund_contrib_amount" value="100만 원 이상"><label>100만 원 이상</label></label>
+            <label class="radio-item"><input type="radio" name="fund_contrib_amount" value="기타" id="fundContribOther"><label>기타</label></label>
+          </div>
+          <div class="other-input-wrap" id="fundContribOtherWrap">
+            <input type="text" class="form-control" id="fund_contrib_text" placeholder="기타 금액을 입력하세요">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label"><span class="q-num">12</span>사회연대기금 설치 및 운용에 대해 바라는 점이나 우려되는 점이 있다면 자유롭게 작성해 주십시오.</label>
+          <textarea class="form-control" id="free_opinion" rows="4" placeholder="자유롭게 의견을 남겨 주세요."></textarea>
+        </div>
+      </div>
+      <div class="nav-buttons">
+        <button class="btn btn-secondary" onclick="goPrev()">← 이전</button>
+        <button class="btn btn-primary" onclick="goNext()">다음 단계 →</button>
+      </div>
+    </div>
+
+    <!-- ══ STEP 6: 개인정보 동의 + 제출 ════════════════════════ -->
+    <div class="survey-step" id="step6">
+      <div class="survey-card">
+        <div class="section-title"><span class="icon">🔒</span>개인정보 수집 및 이용 동의</div>
+
+        <div class="consent-box">
+          <strong>[개인정보 수집 및 이용 동의서]</strong><br><br>
+          본 설문은 광명시 사회연대기금 제도 설계를 위한 기초 자료로 활용되며, 수집된 개인정보(이름, 성별, 연령대, 기업명, 연락처, 이메일 등)는 통계 분석 목적 외에는 사용되지 않습니다. 응답 내용은 익명으로 처리되며, 관련 법령에 따라 최대 5년까지 안전하게 관리됩니다.
+        </div>
+
+        <div class="form-group mt-16">
+          <label class="form-label">개인정보 수집·이용에 동의하십니까? <span class="required">*</span></label>
+          <div class="radio-group horizontal">
+            <label class="radio-item"><input type="radio" name="consent_collect" value="동의함"><label>동의함</label></label>
+            <label class="radio-item"><input type="radio" name="consent_collect" value="동의하지 않음"><label>동의하지 않음</label></label>
+          </div>
+        </div>
+
+        <div class="consent-box" style="margin-top:24px">
+          <strong>[개인정보 제3자 제공 동의]</strong><br><br>
+          본 설문을 통해 수집된 개인정보는 사회연대기금 관련 기관에 한하여 제공·이용될 수 있습니다.<br><br>
+          <strong>1. 제공받는자:</strong> 광명시 및 사회연대기금 관련 연구·운영 수행기관<br>
+          <strong>2. 제공목적:</strong> 사회연대기금 제도 설계, 정책 연구, 설문 결과 분석 및 제도 운영 참고 등<br>
+          <strong>3. 제공항목:</strong> 이름, 성별, 연령대, 기업명, 연락처, 이메일 등<br>
+          <strong>4. 보유 및 이용기간:</strong> 최대 5년<br><br>
+          귀하는 개인정보 제3자 제공에 대해 동의를 거부할 권리가 있으며 동의하지 않더라도 설문 참여에는 제한이 없습니다.
+        </div>
+
+        <div class="form-group mt-16">
+          <label class="form-label">개인정보 제3자 제공에 동의하십니까?</label>
+          <div class="radio-group horizontal">
+            <label class="radio-item"><input type="radio" name="consent_3rd_party" value="동의함"><label>동의함</label></label>
+            <label class="radio-item"><input type="radio" name="consent_3rd_party" value="동의하지 않음"><label>동의하지 않음</label></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="survey-card mt-0" style="margin-top:16px">
+        <div id="submitAlert"></div>
+        <button class="btn btn-submit" id="submitBtn" onclick="submitForm()">
+          <span id="submitBtnText">✅ 설문 제출하기</span>
+        </button>
+      </div>
+
+      <div class="nav-buttons" style="justify-content:flex-start">
+        <button class="btn btn-secondary" onclick="goPrev()">← 이전</button>
+      </div>
+    </div>
+
+    <!-- ══ STEP 7: 완료 ═════════════════════════════════════ -->
+    <div class="survey-step" id="step7">
+      <div class="survey-card">
+        <div class="success-screen">
+          <div class="check-circle">✓</div>
+          <h2>설문 제출 완료!</h2>
+          <p>소중한 의견을 제출해 주셔서 감사합니다.<br>
+            귀하의 응답은 광명시 사회연대기금 설치·운용 방안 수립에 소중하게 활용됩니다.</p>
+          <br>
+          <p class="text-muted" style="font-size:13px">문의: 광명시 사회연대경제센터</p>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /.survey-wrapper -->
+
+  <script src="app.js"></script>
+</body>
+
+</html>

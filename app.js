@@ -4,7 +4,7 @@
 
 // ── 설정 ─────────────────────────────────────
 // GAS 배포 후 여기에 URL을 입력하세요
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz40T88IkaWp_i3OcJ6A_0WzUp6DJd9_xpdrAQassUiNMDkg3WXtjd0qC8Ra5EUKEBJ/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxoo4zosnr4wX75pcW4m8Cyvi0O3y-acAJrLeYZP76mCiUlP-BRsNe9Uf4b6R3ZG-b8/exec';
 
 // ── 상태 ─────────────────────────────────────
 let currentStep = 1;

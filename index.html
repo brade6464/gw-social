@@ -14,7 +14,7 @@
   <header class="survey-header">
     <div class="badge-label">광명시 사회적경제과</div>
     <h1>사회연대기금 설치 및 운용 방안 설문조사</h1>
-    <p>본 설문은 광명시 사회연대기금 설치·운용 방안 수립을 위한 기초자료 수집을 목적으로 합니다.</p>
+    <p>안녕하십니까? 본 설문은 광명시 사회연대경제기업의 지속가능한 성장을 지원하기 위한 '사회연대기금' 조성에 앞서, 현장의 목소리와 시민의 의견을 수렴하고자 합니다. 귀하의 소중한 답변은 기금 운용 관련 조례 제정 및 운영 방향 설정의 기초 자료로 활용될 예정이오니 성실히 답변 부탁드립니다. (설문 기간: 2026. 3. 16까지)</p>
   </header>
 
   <div class="survey-wrapper">
@@ -200,7 +200,7 @@
                   <th>대출 기관(종류)</th>
                   <th>대출 경험</th>
                   <th>대출시기(년)</th>
-                  <th>대출액(만원)</th>
+                  <th>대출액(원)</th>
                   <th>대출이율(%)</th>
                 </tr>
               </thead>
@@ -210,7 +210,7 @@
         </div>
 
         <div class="form-group">
-          <label class="form-label"><span class="q-num">4</span>귀하가 운영하는(속한) 기업이 대출 경험이 있다면, 그 용도는 무엇입니까? <span class="text-muted">(복수 선택)</span></label>
+          <label class="form-label"><span class="q-num">4</span>귀하가 운영하는(속한) 기업이 대출 경험이 있다면, 그 용도는 무엇입니까? <span class="text-muted">(복수 응답 가능)</span></label>
           <div class="check-group">
             <label class="check-item"><input type="checkbox" name="loan_purpose" value="운전(영)자금(인건비 등)"><label>운전(영)자금(인건비 등)</label></label>
             <label class="check-item"><input type="checkbox" name="loan_purpose" value="시설자금(시설 투자 등)"><label>시설자금(시설 투자 등)</label></label>
@@ -327,13 +327,13 @@
 
         <div class="form-group">
           <label class="form-label"><span class="q-num">10</span>귀하가 운영하는(속한) 기업에서 자금이 가장 필요한 시기는 언제입니까?</label>
-          <div class="check-group">
-            <label class="check-item"><input type="checkbox" name="fund_needed_timing" value="창업 초기(1년 ~ 7년)"><label>창업 초기(1년 ~ 7년)</label></label>
-            <label class="check-item"><input type="checkbox" name="fund_needed_timing" value="성장·확장 단계(7년 이후)"><label>성장·확장 단계(7년 이후)</label></label>
-            <label class="check-item"><input type="checkbox" name="fund_needed_timing" value="시설·설비 투자 시"><label>시설·설비 투자 시</label></label>
-            <label class="check-item"><input type="checkbox" name="fund_needed_timing" value="건물, 토지 등 부동산 구입 시"><label>건물, 토지 등 부동산 구입 시</label></label>
-            <label class="check-item"><input type="checkbox" name="fund_needed_timing" value="사업운영 중 일시적 자금 부족 시"><label>사업운영 중 일시적 자금 부족 시</label></label>
-            <label class="check-item"><input type="checkbox" name="fund_needed_timing" value="기타" id="fundNeededTimingOther"><label>기타</label></label>
+          <div class="radio-group">
+            <label class="radio-item"><input type="radio" name="fund_needed_timing" value="창업 초기(1년 ~ 7년)"><label>창업 초기(1년 ~ 7년)</label></label>
+            <label class="radio-item"><input type="radio" name="fund_needed_timing" value="성장·확장 단계(7년 이후)"><label>성장·확장 단계(7년 이후)</label></label>
+            <label class="radio-item"><input type="radio" name="fund_needed_timing" value="시설·설비 투자 시"><label>시설·설비 투자 시</label></label>
+            <label class="radio-item"><input type="radio" name="fund_needed_timing" value="건물, 토지 등 부동산 구입 시"><label>건물, 토지 등 부동산 구입 시</label></label>
+            <label class="radio-item"><input type="radio" name="fund_needed_timing" value="사업운영 중 일시적 자금 부족 시"><label>사업운영 중 일시적 자금 부족 시</label></label>
+            <label class="radio-item"><input type="radio" name="fund_needed_timing" value="기타" id="fundNeededTimingOther"><label>기타</label></label>
           </div>
           <div class="other-input-wrap" id="fundNeededTimingOtherWrap">
             <input type="text" class="form-control" id="fund_needed_timing_text" placeholder="기타 시기를 입력하세요">
@@ -374,7 +374,7 @@
         </div>
 
         <div class="form-group">
-          <label class="form-label"><span class="q-num">3</span>귀하는 '광명시 사회연대기금'이 왜 필요하다고 생각하십니까? <span class="text-muted">(복수 선택)</span></label>
+          <label class="form-label"><span class="q-num">3</span>귀하는 '광명시 사회연대기금'이 왜 필요하다고 생각하십니까? (복수 응답 가능)<span class="text-muted"></span></label>
           <div class="check-group">
             <label class="check-item"><input type="checkbox" name="solidarity_need_reason" value="사회연대경제기업의 안정적인 경영과 지속가능한 성장을 돕기 위해"><label>사회연대경제기업의 안정적인 경영과 지속가능한 성장을 돕기 위해</label></label>
             <label class="check-item"><input type="checkbox" name="solidarity_need_reason" value="사회적 가치 중심 사업에 대한 투자와 지원이 필요하기 때문에"><label>사회적 가치 중심 사업에 대한 투자와 지원이 필요하기 때문에</label></label>
@@ -428,7 +428,7 @@
         </div>
 
         <div class="form-group">
-          <label class="form-label"><span class="q-num">6</span>귀하는 '광명시 사회연대기금'이 어떤 방식으로 운영되는 것이 바람직하다고 생각하십니까? <span class="text-muted">(복수 선택)</span></label>
+          <label class="form-label"><span class="q-num">6</span>귀하는 '광명시 사회연대기금'이 어떤 방식으로 운영되는 것이 바람직하다고 생각하십니까? <span class="text-muted">(복수 응답 가능)</span></label>
           <div class="check-group">
             <label class="check-item"><input type="checkbox" name="solidarity_operation" value="저리 융자(대출) 지원"><label>저리 융자(대출) 지원</label></label>
             <label class="check-item"><input type="checkbox" name="solidarity_operation" value="투자(지분·펀드) 방식 지원"><label>투자(지분·펀드) 방식 지원</label></label>
@@ -456,15 +456,15 @@
         <div class="section-title"><span class="icon">🌱</span>사회연대기금 활용</div>
 
         <div class="form-group">
-          <label class="form-label"><span class="q-num">7</span>귀하는 '광명시 사회연대기금'을 이용할 때 가장 중요한 요소로 무엇을 생각하십니까? <span class="text-muted">(복수 선택)</span></label>
-          <div class="check-group">
-            <label class="check-item"><input type="checkbox" name="fund_important_factor" value="(융자시)낮은 금리"><label>(융자시)낮은 금리</label></label>
-            <label class="check-item"><input type="checkbox" name="fund_important_factor" value="(투자시)낮은 투자회수율"><label>(투자시)낮은 투자회수율</label></label>
-            <label class="check-item"><input type="checkbox" name="fund_important_factor" value="상환 조건 및 기간"><label>상환 조건 및 기간</label></label>
-            <label class="check-item"><input type="checkbox" name="fund_important_factor" value="간편한 신청 및 서류"><label>간편한 신청 및 서류</label></label>
-            <label class="check-item"><input type="checkbox" name="fund_important_factor" value="사회적 가치를 반영한 심사 기준"><label>사회적 가치를 반영한 심사 기준</label></label>
-            <label class="check-item"><input type="checkbox" name="fund_important_factor" value="사후 관리 및 컨설팅"><label>사후 관리 및 컨설팅</label></label>
-            <label class="check-item"><input type="checkbox" name="fund_important_factor" value="기타" id="fundImportantFactorOther"><label>기타</label></label>
+          <label class="form-label"><span class="q-num">7</span>귀하는 '광명시 사회연대기금'을 이용할 때 가장 중요한 요소로 무엇을 생각하십니까?</label>
+          <div class="radio-group">
+            <label class="radio-item"><input type="radio" name="fund_important_factor" value="(융자시)낮은 금리"><label>(융자시)낮은 금리</label></label>
+            <label class="radio-item"><input type="radio" name="fund_important_factor" value="(투자시)낮은 투자회수율"><label>(투자시)낮은 투자회수율</label></label>
+            <label class="radio-item"><input type="radio" name="fund_important_factor" value="상환 조건 및 기간"><label>상환 조건 및 기간</label></label>
+            <label class="radio-item"><input type="radio" name="fund_important_factor" value="간편한 신청 및 서류"><label>간편한 신청 및 서류</label></label>
+            <label class="radio-item"><input type="radio" name="fund_important_factor" value="사회적 가치를 반영한 심사 기준"><label>사회적 가치를 반영한 심사 기준</label></label>
+            <label class="radio-item"><input type="radio" name="fund_important_factor" value="사후 관리 및 컨설팅"><label>사후 관리 및 컨설팅</label></label>
+            <label class="radio-item"><input type="radio" name="fund_important_factor" value="기타" id="fundImportantFactorOther"><label>기타</label></label>
           </div>
           <div class="other-input-wrap" id="fundImportantFactorOtherWrap">
             <input type="text" class="form-control" id="fund_important_factor_text" placeholder="기타 요소를 입력하세요">
@@ -483,15 +483,15 @@
         </div>
 
         <div class="form-group">
-          <label class="form-label"><span class="q-num">9</span>귀하는 어떠한 목적으로 '광명시 사회연대기금'을 이용하시겠습니까? <span class="text-muted">(복수 선택)</span></label>
-          <div class="check-group">
-            <label class="check-item"><input type="checkbox" name="fund_use_purpose" value="긴급 운영자금(인건비 임차료 등)"><label>긴급 운영자금(인건비 임차료 등)</label></label>
-            <label class="check-item"><input type="checkbox" name="fund_use_purpose" value="신규 시설·설비 투자"><label>신규 시설·설비 투자</label></label>
-            <label class="check-item"><input type="checkbox" name="fund_use_purpose" value="건물 또는 토지 등 부동산 구입"><label>건물 또는 토지 등 부동산 구입</label></label>
-            <label class="check-item"><input type="checkbox" name="fund_use_purpose" value="사업 확대를 위한 사업개발비(R&D 비용 등)"><label>사업 확대를 위한 사업개발비(R&D 비용 등)</label></label>
-            <label class="check-item"><input type="checkbox" name="fund_use_purpose" value="기존 대출 상환(대환대출)"><label>기존 대출 상환(대환대출)</label></label>
-            <label class="check-item"><input type="checkbox" name="fund_use_purpose" value="홍보·마케팅 자금"><label>홍보·마케팅 자금</label></label>
-            <label class="check-item"><input type="checkbox" name="fund_use_purpose" value="기타" id="fundPurposeOther"><label>기타</label></label>
+          <label class="form-label"><span class="q-num">9</span>귀하는 어떠한 목적으로 '광명시 사회연대기금'을 이용하시겠습니까?</label>
+          <div class="radio-group">
+            <label class="radio-item"><input type="radio" name="fund_use_purpose" value="긴급 운영자금(인건비 임차료 등)"><label>긴급 운영자금(인건비 임차료 등)</label></label>
+            <label class="radio-item"><input type="radio" name="fund_use_purpose" value="신규 시설·설비 투자"><label>신규 시설·설비 투자</label></label>
+            <label class="radio-item"><input type="radio" name="fund_use_purpose" value="건물 또는 토지 등 부동산 구입"><label>건물 또는 토지 등 부동산 구입</label></label>
+            <label class="radio-item"><input type="radio" name="fund_use_purpose" value="사업 확대를 위한 사업개발비(R&D 비용 등)"><label>사업 확대를 위한 사업개발비(R&D 비용 등)</label></label>
+            <label class="radio-item"><input type="radio" name="fund_use_purpose" value="기존 대출 상환(대환대출)"><label>기존 대출 상환(대환대출)</label></label>
+            <label class="radio-item"><input type="radio" name="fund_use_purpose" value="홍보·마케팅 자금"><label>홍보·마케팅 자금</label></label>
+            <label class="radio-item"><input type="radio" name="fund_use_purpose" value="기타" id="fundPurposeOther"><label>기타</label></label>
           </div>
           <div class="other-input-wrap" id="fundPurposeOtherWrap">
             <input type="text" class="form-control" id="fund_purpose_text" placeholder="기타 목적을 입력하세요">
@@ -609,7 +609,7 @@
           <p>소중한 의견을 제출해 주셔서 감사합니다.<br>
             귀하의 응답은 광명시 사회연대기금 설치·운용 방안 수립에 소중하게 활용됩니다.</p>
           <br>
-          <p class="text-muted" style="font-size:13px">문의: 광명시 사회적경제과</p>
+          <p class="text-muted" style="font-size:13px">문의: 광명시 사회적경제과(☎02-2680-0741)</p>
         </div>
       </div>
     </div>

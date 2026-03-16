@@ -232,10 +232,7 @@
             <label class="radio-item"><input type="radio" name="total_loan_amount" value="5천만 원 이상 ~ 1억 원 미만"><label>5천만 원 ~ 1억 원 미만</label></label>
             <label class="radio-item"><input type="radio" name="total_loan_amount" value="1억 원 이상 ~ 3억 원 미만"><label>1억 원 ~ 3억 원 미만</label></label>
             <label class="radio-item"><input type="radio" name="total_loan_amount" value="3억 원 이상 ~ 5억 원 미만"><label>3억 원 ~ 5억 원 미만</label></label>
-            <label class="radio-item"><input type="radio" name="total_loan_amount" value="기타" id="totalLoanAmtOther"><label>기타</label></label>
-          </div>
-          <div class="other-input-wrap" id="totalLoanAmtOtherWrap">
-            <input type="text" class="form-control" id="total_loan_amount_text" placeholder="금액을 기재하세요 (예: 6억 원)">
+            <label class="radio-item"><input type="radio" name="total_loan_amount" value="5억 원 이상" id="totalLoanAmtOther"><label>5억 원 이상</label></label>
           </div>
         </div>
       </div>
@@ -415,10 +412,7 @@
             <label class="check-item"><input type="checkbox" name="solidarity_complement_reason" value="낮은 대출금리"><label>낮은 대출금리</label></label>
             <label class="check-item"><input type="checkbox" name="solidarity_complement_reason" value="상환조건 및 기간의 유연성"><label>상환조건 및 기간의 유연성</label></label>
             <label class="check-item"><input type="checkbox" name="solidarity_complement_reason" value="대출심사 기간의 단축"><label>대출심사 기간의 단축</label></label>
-            <label class="check-item"><input type="checkbox" name="solidarity_complement_reason" value="기타" id="solidarityComplementOther"><label>기타</label></label>
-          </div>
-          <div class="other-input-wrap" id="solidarityComplementOtherWrap">
-            <input type="text" class="form-control" id="solidarity_complement_text" placeholder="기타 내용을 입력하세요">
+            <label class="check-item"><input type="checkbox" name="solidarity_complement_reason" value="저신용 및 저소득자 대출"><label>저신용 및 저소득자 대출</label></label>
           </div>
         </div>
 
@@ -443,7 +437,7 @@
             <label class="check-item"><input type="checkbox" name="solidarity_operation" value="보증 및 금융기관 연계 지원"><label>보증 및 금융기관 연계 지원</label></label>
             <label class="check-item"><input type="checkbox" name="solidarity_operation" value="사회연대경제조직 설립 및 운영 지원"><label>사회연대경제조직 설립 및 운영 지원</label></label>
             <label class="check-item"><input type="checkbox" name="solidarity_operation" value="자조 기금(공제조합 등) 매칭 지원"><label>자조 기금(공제조합 등) 매칭 지원</label></label>
-            <label class="check-item"><input type="checkbox" name="solidarity_operation" value="기타" id="solidarityOperationOther"><label>기타</label></label>
+            <label class="check-item"><input type="checkbox" name="solidarity_operation" value="저신용 및 저소득자 대출 등" id="solidarityOperationOther"><label>저신용 및 저소득자 대출 등</label></label>
           </div>
           <div class="other-input-wrap" id="solidarityOperationOtherWrap">
             <input type="text" class="form-control" id="solidarity_operation_text" placeholder="기타 내용을 입력하세요">
@@ -536,16 +530,13 @@
           <label class="form-label"><span class="q-num">11</span>귀하가 사회연대경제조직 간 상호부조를 위한 자조기금 또는 공제조합에 참여한다면, 연평균 어느 정도의 금액까지 출연(납부)이 가능하십니까?
             <span class="form-hint"> ※ 기금은 추후 긴급 자금 대출이나 이자 지원의 혜택으로 환원됩니다.</span></label>
           <div class="radio-group">
+            <label class="radio-item"><input type="radio" name="fund_contrib_amount" value="연 5만 원 미만"><label>연 5만 원 미만</label></label>
             <label class="radio-item"><input type="radio" name="fund_contrib_amount" value="연 5만 원"><label>연 5만 원</label></label>
             <label class="radio-item"><input type="radio" name="fund_contrib_amount" value="연 10만 원"><label>연 10만 원</label></label>
-            <label class="radio-item"><input type="radio" name="fund_contrib_amount" value="연 10만 원 이상 ~ 30만 원 미만"><label>연 10만 원 ~ 30만 원 미만</label></label>
-            <label class="radio-item"><input type="radio" name="fund_contrib_amount" value="연 30만 원 이상 ~ 50만 원 미만"><label>연 30만 원 ~ 50만 원 미만</label></label>
-            <label class="radio-item"><input type="radio" name="fund_contrib_amount" value="연 50만 원 이상 ~ 100만 원 미만"><label>연 50만 원 ~ 100만 원 미만</label></label>
-            <label class="radio-item"><input type="radio" name="fund_contrib_amount" value="100만 원 이상"><label>100만 원 이상</label></label>
-            <label class="radio-item"><input type="radio" name="fund_contrib_amount" value="기타" id="fundContribOther"><label>기타</label></label>
-          </div>
-          <div class="other-input-wrap" id="fundContribOtherWrap">
-            <input type="text" class="form-control" id="fund_contrib_text" placeholder="기타 금액을 입력하세요">
+            <label class="radio-item"><input type="radio" name="fund_contrib_amount" value="연 10만 원 이상 ~ 30만 원 미만"><label>연 10만 원 이상 ~ 30만 원 미만</label></label>
+            <label class="radio-item"><input type="radio" name="fund_contrib_amount" value="연 30만 원 이상 ~ 50만 원 미만"><label>연 30만 원 이상 ~ 50만 원 미만</label></label>
+            <label class="radio-item"><input type="radio" name="fund_contrib_amount" value="연 50만 원 이상 ~ 100만 원 미만"><label>연 50만 원 이상 ~ 100만 원 미만</label></label>
+            <label class="radio-item"><input type="radio" name="fund_contrib_amount" value="100만 원 이상" id="fundContribOther"><label>100만 원 이상</label></label>
           </div>
         </div>
 

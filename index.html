@@ -294,12 +294,12 @@
 
         <div class="form-group" id="loanDissatisfactionGroup" style="display:none">
           <label class="form-label"><span class="q-num">8-1</span>귀하가 운영하는(속한) 기업의 대출 조건이 불만족한 이유는 무엇입니까?</label>
-          <div class="check-group">
-            <label class="check-item"><input type="checkbox" name="loan_dissatisfaction_reason" value="대출금액이 적음"><label>대출금액이 적음</label></label>
-            <label class="check-item"><input type="checkbox" name="loan_dissatisfaction_reason" value="대출이자율이 높음"><label>대출이자율이 높음</label></label>
-            <label class="check-item"><input type="checkbox" name="loan_dissatisfaction_reason" value="상환기간이 짧음"><label>상환기간이 짧음</label></label>
-            <label class="check-item"><input type="checkbox" name="loan_dissatisfaction_reason" value="상환조건이 맞지 않음"><label>상환조건이 맞지 않음</label></label>
-            <label class="check-item"><input type="checkbox" name="loan_dissatisfaction_reason" value="기타" id="loanDissatisfactionOther"><label>기타</label></label>
+          <div class="radio-group">
+            <label class="radio-item"><input type="radio" name="loan_dissatisfaction_reason" value="대출금액이 적음"><label>대출금액이 적음</label></label>
+            <label class="radio-item"><input type="radio" name="loan_dissatisfaction_reason" value="대출이자율이 높음"><label>대출이자율이 높음</label></label>
+            <label class="radio-item"><input type="radio" name="loan_dissatisfaction_reason" value="상환기간이 짧음"><label>상환기간이 짧음</label></label>
+            <label class="radio-item"><input type="radio" name="loan_dissatisfaction_reason" value="상환조건이 맞지 않음"><label>상환조건이 맞지 않음</label></label>
+            <label class="radio-item"><input type="radio" name="loan_dissatisfaction_reason" value="기타" id="loanDissatisfactionOther"><label>기타</label></label>
           </div>
           <div class="other-input-wrap" id="loanDissatisfactionOtherWrap">
             <input type="text" class="form-control" id="loan_dissatisfaction_text" placeholder="기타 이유를 입력하세요">
@@ -307,7 +307,7 @@
         </div>
 
         <div class="form-group">
-          <label class="form-label"><span class="q-num">9</span>향후 1~3년 내 자금 조달 계획이 있다면, 어떤 방식을 활용하실 계획입니까? <span class="text-muted">(복수 선택)</span></label>
+          <label class="form-label"><span class="q-num">9</span>향후 1~3년 내 자금 조달 계획이 있다면, 어떤 방식을 활용하실 계획입니까? <span class="text-muted">(복수 응답 가능)</span></label>
           <div class="check-group">
             <label class="check-item"><input type="checkbox" name="future_fund_plan" value="출자 및 증자"><label>출자 및 증자</label></label>
             <label class="check-item"><input type="checkbox" name="future_fund_plan" value="정부 보조금"><label>정부 보조금</label></label>

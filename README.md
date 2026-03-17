@@ -136,7 +136,6 @@ clasp create --type sheets --title "설문응답 제목 입력"
 
 ```bash
 clasp push
-```
 
 ### 3단계: 웹 앱 배포 (최초 1회 — 브라우저에서 수동 설정)
 

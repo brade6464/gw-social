@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initOtherInputs();
   initConditionalFields();
   updateProgress();
+  checkForDraft();
 });
 
 // ── 단계 동그라미 ─────────────────────────────
@@ -71,7 +72,7 @@ function buildLoanTable() {
         </div>
       </td>
       <td data-label="대출시기(년)"><input type="number" class="form-control loan-detail-input" id="loan_${inst.key}_yr"  placeholder="-" disabled min="1990" max="2030"></td>
-      <td data-label="대출액(만원)"><input type="number" class="form-control loan-detail-input" id="loan_${inst.key}_amt" placeholder="-" disabled></td>
+      <td data-label="대출액(원)"><input type="number" class="form-control loan-detail-input" id="loan_${inst.key}_amt" placeholder="-" disabled></td>
       <td data-label="대출이율(%)"><input type="number" class="form-control loan-detail-input" id="loan_${inst.key}_rate" placeholder="-" disabled min="0" max="99" step="0.1"></td>
     `;
     tbody.appendChild(tr);
@@ -155,12 +156,10 @@ function initOtherInputs() {
     ['futureFundPlanOther', 'futureFundPlanOtherWrap'],
     ['fundNeededTimingOther', 'fundNeededTimingOtherWrap'],
     ['solidarityNeedReasonOther', 'solidarityNeedReasonOtherWrap'],
-    ['solidarityComplementOther', 'solidarityComplementOtherWrap'],
     ['solidarityOperationOther', 'solidarityOperationOtherWrap'],
     ['fundImportantFactorOther', 'fundImportantFactorOtherWrap'],
     ['fundPurposeOther', 'fundPurposeOtherWrap'],
     ['fundExpectedAmtOther', 'fundExpectedAmtOtherWrap'],
-    ['fundContribOther', 'fundContribOtherWrap'],
   ];
   pairs.forEach(([triggerId, wrapId]) => {
     const trigger = document.getElementById(triggerId);
@@ -191,6 +190,48 @@ function initConditionalFields() {
       const show = ['매우 그렇다', '그렇다', '보통이다'].includes(radio.value) && radio.checked;
       const group = document.getElementById('solidarityComplementReasonGroup');
       if (group) group.style.display = show ? 'block' : 'none';
+    });
+  });
+
+  // 자금조달 어려움 선택 제한 (최대 2개)
+  initCheckboxLimit('fund_difficulty_main', 2);
+
+  // 사회연대기금 필요 이유 선택 제한 (최대 2개)
+  initCheckboxLimit('solidarity_need_reason', 2);
+
+  // 대출 용도 선택 제한 (최대 2개)
+  initCheckboxLimit('loan_purpose', 2);
+
+  // 주 사업분야 선택 제한 (최대 2개)
+  initCheckboxLimit('business_sector', 2);
+
+
+
+  // 사회연대기금 보완 이유 선택 제한 (최대 2개)
+  initCheckboxLimit('solidarity_complement_reason', 2);
+
+  // 사회연대기금 운영 방식 선택 제한 (최대 2개)
+  initCheckboxLimit('solidarity_operation', 2);
+
+  // 향후 자금 조달 계획 선택 제한 (최대 2개)
+  initCheckboxLimit('future_fund_plan', 2);
+
+  // 연락처 입력 제한 (숫자만)
+  document.getElementById('phone').addEventListener('input', function(e) {
+    this.value = this.value.replace(/\D/g, '');
+  });
+}
+
+// ── 체크박스 선택 제한 함수 ─────────────────────
+function initCheckboxLimit(name, max) {
+  const checkboxes = document.querySelectorAll(`input[name="${name}"]`);
+  checkboxes.forEach(cb => {
+    cb.addEventListener('change', () => {
+      const checked = document.querySelectorAll(`input[name="${name}"]:checked`);
+      if (checked.length > max) {
+        cb.checked = false;
+        showAlert(`최대 ${max}개까지 선택할 수 있습니다.`, 'alertBox');
+      }
     });
   });
 }
@@ -224,6 +265,7 @@ function goNext() {
   if (currentStep < TOTAL_STEPS) {
     currentStep++;
     updateProgress();
+    saveDraft(); // keep latest position
   }
 }
 
@@ -231,6 +273,7 @@ function goPrev() {
   if (currentStep > 1) {
     currentStep--;
     updateProgress();
+    saveDraft();
   }
 }
 
@@ -269,9 +312,6 @@ function validateStep(step) {
     if (!getRadioValue('gender')) {
       showAlert('성별을 선택해 주세요.'); return false;
     }
-    if (!getRadioValue('age_group')) {
-      showAlert('연령대를 선택해 주세요.'); return false;
-    }
     if (!document.getElementById('company_name')?.value.trim()) {
       showAlert('기업명을 입력해 주세요.'); return false;
     }
@@ -298,6 +338,153 @@ function validateStep(step) {
   }
 
   return true;
+}
+
+// ── 임시저장 / 이어쓰기 ───────────────────────
+const DRAFT_KEY = 'surveyDraft';
+
+function saveDraft() {
+  const draft = {
+    currentStep,
+    data: collectFormData()
+  };
+  localStorage.setItem(DRAFT_KEY, JSON.stringify(draft));
+  showAlert('임시저장되었습니다.', 'alertBox');
+}
+
+function loadDraft() {
+  const str = localStorage.getItem(DRAFT_KEY);
+  if (!str) return;
+  try {
+    const draft = JSON.parse(str);
+    if (draft.data) fillFormData(draft.data);
+    currentStep = draft.currentStep || 1;
+    updateProgress();
+    showAlert('저장된 설문을 불러왔습니다.', 'alertBox');
+  } catch (e) {
+    console.error('임시저장 데이터 파싱 오류', e);
+  }
+}
+
+function clearDraft() {
+  localStorage.removeItem(DRAFT_KEY);
+}
+
+function checkForDraft() {
+  if (localStorage.getItem(DRAFT_KEY)) {
+    const banner = document.createElement('div');
+    banner.className = 'draft-banner';
+    banner.innerHTML = `
+      <span>이전에 임시저장한 설문이 있습니다.</span>
+      <button class="btn btn-secondary btn-sm" id="resumeBtn">이어쓰기</button>
+      <button class="btn btn-secondary btn-sm" id="newBtn">새로작성</button>
+    `;
+    document.body.prepend(banner);
+    document.getElementById('resumeBtn').addEventListener('click', () => {
+      loadDraft();
+      banner.remove();
+    });
+    document.getElementById('newBtn').addEventListener('click', () => {
+      clearDraft();
+      banner.remove();
+    });
+  }
+}
+
+function fillFormData(data) {
+  // helpers
+  const setRadio = (name, value) => {
+    if (!value) return;
+    document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
+      if (r.value === value) {
+        r.checked = true;
+        r.dispatchEvent(new Event('change'));
+      }
+    });
+  };
+  const setCheckboxes = (name, valueStr) => {
+    if (!valueStr) return;
+    const vals = valueStr.split(',').map(s => s.trim()).filter(Boolean);
+    vals.forEach(v => {
+      const cb = document.querySelector(`input[name="${name}"][value="${v}"]`);
+      if (cb) {
+        cb.checked = true;
+        cb.dispatchEvent(new Event('change'));
+      }
+    });
+  };
+
+  // Step1
+  document.getElementById('name').value = data.name || '';
+  setRadio('gender', data.gender);
+  setRadio('age_group', data.age_group);
+  document.getElementById('phone').value = data.phone || '';
+  document.getElementById('email').value = data.email || '';
+  document.getElementById('company_name').value = data.company_name || '';
+  document.getElementById('company_year').value = data.company_year || '';
+  if (data.org_type) {
+    if (['(예비)사회적기업','(예비)마을기업','사회적협동조합','협동조합'].includes(data.org_type)) {
+      setRadio('org_type', data.org_type);
+    } else {
+      setRadio('org_type','기타');
+      document.getElementById('org_type_text').value = data.org_type;
+    }
+  }
+  setCheckboxes('business_sector', data.business_sector);
+  document.getElementById('biz_description').value = data.biz_description || '';
+
+  // Step2 percentages
+  PCT_FIELDS.forEach(id => {
+    if (data[id] !== undefined) document.getElementById(id).value = data[id];
+  });
+  document.getElementById('fund_other_text').value = data.fund_other_text || '';
+  setRadio('fund_3yr_difficulty', data.fund_3yr_difficulty);
+
+  // Step2 loans
+  LOAN_INSTITUTIONS.forEach(inst => {
+    setRadio(`loan_${inst.key}_exp`, data[`loan_${inst.key}_exp`]);
+    if (data[`loan_${inst.key}_yr`]) document.getElementById(`loan_${inst.key}_yr`).value = data[`loan_${inst.key}_yr`];
+    if (data[`loan_${inst.key}_amt`]) document.getElementById(`loan_${inst.key}_amt`).value = data[`loan_${inst.key}_amt`];
+    if (data[`loan_${inst.key}_rate`]) document.getElementById(`loan_${inst.key}_rate`).value = data[`loan_${inst.key}_rate`];
+  });
+  document.getElementById('loan_other_name').value = data.loan_other_name || '';
+  setCheckboxes('loan_purpose', data.loan_purpose);
+  setRadio('total_loan_amount', data.total_loan_amount);
+
+  // Step3
+  setRadio('loan_repayment', data.loan_repayment);
+  setCheckboxes('fund_difficulty_main', data.fund_difficulty_main);
+  setRadio('loan_satisfaction', data.loan_satisfaction);
+  setCheckboxes('loan_dissatisfaction_reason', data.loan_dissatisfaction_reason);
+  setCheckboxes('future_fund_plan', data.future_fund_plan);
+  setRadio('fund_needed_timing', data.fund_needed_timing);
+
+  // Step4
+  setRadio('finance_accessibility', data.finance_accessibility);
+  setRadio('solidarity_need', data.solidarity_need);
+  setCheckboxes('solidarity_need_reason', data.solidarity_need_reason);
+  setRadio('solidarity_complement', data.solidarity_complement);
+  setCheckboxes('solidarity_complement_reason', data.solidarity_complement_reason);
+  setRadio('solidarity_impact', data.solidarity_impact);
+  setCheckboxes('solidarity_operation', data.solidarity_operation);
+
+  // Step5
+  setRadio('fund_important_factor', data.fund_important_factor);
+  setRadio('fund_use_willingness', data.fund_use_willingness);
+  setRadio('fund_use_purpose', data.fund_use_purpose);
+  setRadio('fund_expected_amount', data.fund_expected_amount);
+  setRadio('fund_participation', data.fund_participation);
+  setRadio('fund_contrib_amount', data.fund_contrib_amount);
+  document.getElementById('free_opinion').value = data.free_opinion || '';
+
+  // Step6
+  setRadio('consent_collect', data.consent_collect);
+  setRadio('consent_3rd_party', data.consent_3rd_party);
+
+  // after filling make sure dynamic fields update
+  updatePctStatus();
+  initOtherInputs();
+  initConditionalFields();
 }
 
 // ═══════════════════════════════════════
@@ -344,7 +531,7 @@ function collectFormData() {
   data.loan_satisfaction = getRadioValue('loan_satisfaction');
   data.loan_dissatisfaction_reason = getCheckboxValues('loan_dissatisfaction_reason');
   data.future_fund_plan = getCheckboxValues('future_fund_plan');
-  data.fund_needed_timing = getCheckboxValues('fund_needed_timing');
+  data.fund_needed_timing = getRadioValue('fund_needed_timing');
 
   // Step 4 — 광명시 사회연대기금
   data.finance_accessibility = getRadioValue('finance_accessibility');
@@ -356,9 +543,9 @@ function collectFormData() {
   data.solidarity_operation = getCheckboxValues('solidarity_operation');
 
   // Step 5 — 기금 활용
-  data.fund_important_factor = getCheckboxValues('fund_important_factor');
+  data.fund_important_factor = getRadioValue('fund_important_factor');
   data.fund_use_willingness = getRadioValue('fund_use_willingness');
-  data.fund_use_purpose = getCheckboxValues('fund_use_purpose');
+  data.fund_use_purpose = getRadioValue('fund_use_purpose');
   data.fund_expected_amount = getRadioValue('fund_expected_amount');
   data.fund_participation = getRadioValue('fund_participation');
   data.fund_contrib_amount = getRadioValue('fund_contrib_amount');
@@ -385,6 +572,7 @@ async function submitForm() {
   if (!SCRIPT_URL || SCRIPT_URL === 'YOUR_GAS_WEB_APP_URL_HERE') {
     console.log('🧪 [LOCAL TEST MODE] 제출 데이터:', data);
     await new Promise(r => setTimeout(r, 1000));
+    clearDraft();
     currentStep = TOTAL_STEPS + 1;
     updateProgress();
     document.getElementById('progressFill').style.width = '100%';
@@ -400,6 +588,7 @@ async function submitForm() {
     });
     const json = await res.json();
     if (json.result === 'success') {
+      clearDraft();
       currentStep = TOTAL_STEPS + 1;
       updateProgress();
       document.getElementById('progressFill').style.width = '100%';

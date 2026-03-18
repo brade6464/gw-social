@@ -438,6 +438,7 @@ textarea.form-control { resize: vertical; min-height: 100px; }
   .loan-table-wrapper { overflow: visible; }
   .loan-table, .loan-table thead, .loan-table tbody,
   .loan-table th, .loan-table td, .loan-table tr { display: block; }
+  .loan-table { min-width: 0; }
   .loan-table thead { display: none; }
   .loan-table tr {
     background: var(--card-bg);
@@ -456,13 +457,19 @@ textarea.form-control { resize: vertical; min-height: 100px; }
     background: transparent !important;
   }
   .loan-table td:first-child {
+    display: block;
     font-size: 15px;
     font-weight: 700;
     color: var(--primary);
     padding-bottom: 10px;
     border-bottom: 1px solid var(--border);
     margin-bottom: 4px;
-    justify-content: flex-start;
+  }
+  .loan-table td:first-child span {
+    font-weight: 400;
+  }
+  .loan-table td:first-child .form-control {
+    max-width: 160px;
   }
   .loan-table td::before {
     content: attr(data-label);
@@ -472,7 +479,8 @@ textarea.form-control { resize: vertical; min-height: 100px; }
     flex-shrink: 0;
     margin-right: 10px;
   }
-  .loan-table .exp-radio-group { justify-content: flex-end; }
+  .loan-table .exp-radio-group { justify-content: flex-end; flex-wrap: wrap; }
+  .loan-table .loan-detail-input { width: 100%; max-width: 120px; }
 }
 
 /* ── Other Input (conditional) ──────────────── */

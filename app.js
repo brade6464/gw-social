@@ -455,7 +455,7 @@ function fillFormData(data) {
   setRadio('loan_repayment', data.loan_repayment);
   setCheckboxes('fund_difficulty_main', data.fund_difficulty_main);
   setRadio('loan_satisfaction', data.loan_satisfaction);
-  setCheckboxes('loan_dissatisfaction_reason', data.loan_dissatisfaction_reason);
+  setRadio('loan_dissatisfaction_reason', data.loan_dissatisfaction_reason);
   setCheckboxes('future_fund_plan', data.future_fund_plan);
   setRadio('fund_needed_timing', data.fund_needed_timing);
 
@@ -529,7 +529,7 @@ function collectFormData() {
   data.loan_repayment = getRadioValue('loan_repayment');
   data.fund_difficulty_main = getCheckboxValues('fund_difficulty_main');
   data.loan_satisfaction = getRadioValue('loan_satisfaction');
-  data.loan_dissatisfaction_reason = getCheckboxValues('loan_dissatisfaction_reason');
+  data.loan_dissatisfaction_reason = getRadioValue('loan_dissatisfaction_reason');
   data.future_fund_plan = getCheckboxValues('future_fund_plan');
   data.fund_needed_timing = getRadioValue('fund_needed_timing');
 
